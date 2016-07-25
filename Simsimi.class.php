@@ -14,10 +14,8 @@ class Simsimi  {
 	 *
 	 */
 	function __construct($k=null) {
-		if ($k){
-			$this->key = $k;
+		if ($k)
 			$this->cookie = md5($k);
-		}
 	}
 
 	/**
