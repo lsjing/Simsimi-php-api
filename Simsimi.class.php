@@ -6,14 +6,18 @@
  */
 class Simsimi  {
 
+	private $key = "cda38ddd-9b21-4111-a7bd-da762f99c3e2";
 	private $cookie = "2D96E7F39FBAB9B28314607D0328D36F";
 
 
 	/**
 	 *
 	 */
-	function __construct($cookieSeed) {
-		if ($cookieSeed)$this->cookie = md5($cookieSeed);
+	function __construct($k=null) {
+		if ($k){
+			$this->key = $k;
+			$this->cookie = md5($k);
+		}
 	}
 
 	/**
@@ -33,7 +37,8 @@ class Simsimi  {
 		$Ch = curl_init();
 		$Options = array(
 				CURLOPT_HTTPHEADER => $header,
-				CURLOPT_URL => 'http://www.simsimi.com/func/req?msg='.$key.'&lc=ch',
+				//CURLOPT_URL => 'http://www.simsimi.com/func/req?msg='.$key.'&lc=ch',
+				CURLOPT_URL => 'http://sandbox.api.simsimi.com/request.p?key='.$this->key.'&lc=zh&text='.$key,
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_REFERER => $Ref,
 		);
